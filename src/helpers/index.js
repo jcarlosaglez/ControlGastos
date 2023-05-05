@@ -5,14 +5,21 @@ export const generarId = () => {
     return random + fecha
 }
 
-export const formatearFecha = () => {
-    const fecha = Date.now()
-
+export const formatearFecha = fechaAFormatear => {
     const opciones = Intl.DateTimeFormat('es-MX', {
         year: 'numeric',
         month: 'long',
         day: '2-digit'
     })
 
-    return opciones.format(fecha)
+    return opciones.format(fechaAFormatear)
+}
+
+export const formatearPesos = cantidadAFormatear => {
+    const opciones = new Intl.NumberFormat('es-MX', {
+        style: 'currency',
+        currency: 'MXN'
+    })
+
+    return opciones.format(cantidadAFormatear)
 }

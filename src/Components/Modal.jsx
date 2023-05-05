@@ -22,7 +22,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
         setNombre(nombre.trim())
         setCategoria(categoria.trim())
 
-       if([nombre, cantidad, categoria].includes('') || cantidad < 1) {
+        if ([nombre, cantidad, categoria].includes('') || cantidad < 1) {
             setMensaje('Todos los campos son obligatorios');
             setCantidad('')
 
@@ -30,12 +30,12 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
                 setMensaje('')
             }, 2500);
             return
-       }
+        }
 
-       guardarGasto({nombre, cantidad, categoria})
-       setNombre('')
-       setCantidad('')
-       setCategoria('')
+        guardarGasto({ nombre, cantidad, categoria })
+        setNombre('')
+        setCantidad('')
+        setCategoria('')
     }
 
     return (

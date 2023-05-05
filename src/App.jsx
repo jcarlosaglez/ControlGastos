@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Header from './Components/Header'
-import { generarId, formatearFecha } from './helpers'
+import { generarId } from './helpers'
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
 import Modal from './Components/Modal'
 import ListadoGastos from './Components/ListadoGastos'
@@ -13,12 +13,12 @@ function App() {
     const [gastos, setGastos] = useState([])
 
     const guardarGasto = gasto => {
-        const resto = presupuesto - gasto.cantidad
+        /*const resto = presupuesto - gasto.cantidad
 
         if (resto < 0) {
             console.log('Ya no tienes presupuesto...');
             return
-        }
+        }*/
 
         setAnimarModal(false)
 
@@ -27,10 +27,10 @@ function App() {
         }, 500);
 
         gasto.id = generarId()
-        gasto.fecha = formatearFecha()
+        gasto.fecha = Date.now()
 
         setGastos([...gastos, gasto])
-        setPresupuesto(resto)
+        //setPresupuesto(resto)
     }
 
     const handleNuevoGasto = () => {
@@ -42,12 +42,13 @@ function App() {
     }
 
     return (
-        <div>
+        <div className={modal ? 'fijar' : ''}>
             <Header
                 presupuesto={presupuesto}
                 setPresupuesto={setPresupuesto}
                 isValidPresupuesto={isValidPresupuesto}
                 setIsValidPresupuesto={setIsValidPresupuesto}
+                gastos={gastos}
             />
 
             {isValidPresupuesto &&
