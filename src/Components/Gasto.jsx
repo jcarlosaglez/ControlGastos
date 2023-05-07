@@ -15,7 +15,7 @@ import IconoOcio from '../img/icono_ocio.svg'
 import IconoSalud from '../img/icono_salud.svg'
 import IconoSuscripciones from '../img/icono_suscripciones.svg'
 
-const Gasto = ({ gasto }) => {
+const Gasto = ({ gasto, setGastoEditar, eliminarGasto }) => {
     const diccionarioCategoria = {
         ahorro: IconoAhorro,
         casa: IconoCasa,
@@ -28,7 +28,7 @@ const Gasto = ({ gasto }) => {
 
     const leadingActions = () => (
         <LeadingActions>
-            <SwipeAction onClick={() => log('Editando...')}>
+            <SwipeAction onClick={() => setGastoEditar(gasto)}>
                 Editar
             </SwipeAction>
         </LeadingActions>
@@ -36,15 +36,11 @@ const Gasto = ({ gasto }) => {
 
     const trailingActions = () => (
         <TrailingActions>
-            <SwipeAction onClick={() => log('Eliminando...')} destructive={true} >
+            <SwipeAction onClick={() => eliminarGasto(gasto.id)} destructive={true} >
                 Eliminar
             </SwipeAction>
         </TrailingActions>
     )
-
-    const log = str => {
-        console.log(str)
-    }
 
     return (
         <SwipeableList>
